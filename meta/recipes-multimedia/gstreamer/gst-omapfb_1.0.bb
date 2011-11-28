@@ -11,7 +11,9 @@ SRCREV = "41c0ef0d67dc9b718ab3a2aeecccc53b9ba8d783"
 PV = "1.0+${PR}"
 
 SRC_URI = "git://github.com/felipec/${PN}.git;protocol=git \
-           file://gst-omapfb-cross-gcc-fix.patch"
+           file://gst-omapfb-cross-gcc-fix.patch \
+	   file://0001-modify-to-use-on-AM3517-with-Qt-Embedded-OMAPFB-over.patch \
+	   file://0002-gst-omapfb-modify-to-use-with-Qt-Mobility-extensions.patch"
 
 S = "${WORKDIR}/git"
 
