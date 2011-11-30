@@ -11,12 +11,15 @@ SRC_URI = "http://get.qt.nokia.com/qt/add-ons/qt-mobility-opensource-src-${PV}.t
            file://0002-Remove-unnecessary-rpaths-from-qml_device-example.patch \
            file://qt-mobility-no-opengl.patch \
 	   file://gcc-scope.patch \
+           file://0001-Fix-for-playing-theora-encoded-videos.patch \
+           file://0002-Support-playing-video-using-gst-omapfb-plugin.patch \
+           file://0001-Avoid-omapfb-plane-setting-errors-on-first-player-st.patch \
 	   "
 
 SRC_URI[md5sum]="ea5db5a8d3dd4709c2926dceda646bd8"
 SRC_URI[sha256sum]="ee3c88975e04139ac9589f76d4be646d44fcbc4c8c1cf2db621abc154cf0ba44"
 
-PR = "r5"
+PR = "r6"
 
 S = "${WORKDIR}/qt-mobility-opensource-src-${PV}"
 
