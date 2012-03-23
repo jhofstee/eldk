@@ -40,6 +40,7 @@ RDEPENDS_${PN}-base = " \
 	qt4-embedded-plugin-imageformat-svg \
 	qt4-embedded-plugin-imageformat-tiff \
 	qt4-embedded-plugin-mousedriver-tslib \
+	qt4-embedded-plugin-kbddriver-linuxinput \
 	qt4-embedded-plugin-phonon-backend-gstreamer \
 	qt4-embedded-plugin-script-dbus \
 	qt4-embedded-plugin-sqldriver-sqlite \
