@@ -5,6 +5,7 @@ DEFAULT_PREFERENCE = "-1"
 DEFAULT_PREFERENCE_generic-armv4t = "1"
 DEFAULT_PREFERENCE_generic-armv5te = "1"
 DEFAULT_PREFERENCE_generic-armv6 = "1"
+DEFAULT_PREFERENCE_generic-armv7a = "1"
 
 PR = "r3"
 
