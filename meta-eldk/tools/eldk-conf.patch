@@ -1,0 +1,64 @@
+--- conf/bblayers.conf.ORIG	2012-04-27 11:38:58.000000000 +0200
++++ conf/bblayers.conf	2012-04-27 11:42:33.918272655 +0200
+@@ -6,4 +6,5 @@
+ BBLAYERS ?= " \
+   /home/wd/git/eldk/meta \
+   /home/wd/git/eldk/meta-yocto \
++  /home/wd/git/eldk/meta-eldk \
+   "
+--- conf/local.conf.ORIG	2012-04-27 11:38:58.168222148 +0200
++++ conf/local.conf	2012-04-27 11:40:17.855762980 +0200
+@@ -26,6 +26,8 @@
+ #
+ # For a quad-core machine, BB_NUMBER_THREADS = "4", PARALLEL_MAKE = "-j 4" would
+ # be appropriate for example.
++BB_NUMBER_THREADS = "4"
++PARALLEL_MAKE = "-j 4"
+ 
+ #
+ # Machine Selection
+@@ -61,7 +63,7 @@
+ #
+ # The default is a downloads directory under TOPDIR which is the build directory.
+ #
+-#DL_DIR ?= "${TOPDIR}/downloads"
++DL_DIR = "/opt/eldk/downloads"
+ 
+ #
+ # Where to place shared-state files
+@@ -99,7 +101,7 @@
+ # Ultimately when creating custom policy, people will likely end up subclassing 
+ # these defaults.
+ #
+-DISTRO ?= "poky"
++DISTRO ?= "eldk"
+ # As an example of a subclass there is a "bleeding" edge policy configuration
+ # where many versions are set to the absolute latest code from the upstream 
+ # source control systems. This is just mentioned here as an example, its not
+@@ -118,7 +120,7 @@
+ #  - 'package_rpm' for rpm style packages
+ # E.g.: PACKAGE_CLASSES ?= "package_rpm package_deb package_ipk"
+ # We default to rpm:
+-PACKAGE_CLASSES ?= "package_rpm"
++PACKAGE_CLASSES ?= "package_ipk"
+ 
+ #
+ # SDK/ADT target architecture
+@@ -127,7 +129,7 @@
+ # you can build the SDK packages for architectures other than the machine you are 
+ # running the build on (i.e. building i686 packages on an x86_64 host._
+ # Supported values are i686 and x86_64
+-#SDKMACHINE ?= "i686"
++SDKMACHINE ?= "i686"
+ 
+ #
+ # Extra image configuration defaults
+@@ -162,7 +164,7 @@
+ #   - 'image-swab' to perform host system intrusion detection
+ # NOTE: if listing mklibs & prelink both, then make sure mklibs is before prelink
+ # NOTE: mklibs also needs to be explicitly enabled for a given image, see local.conf.extended
+-USER_CLASSES ?= "buildstats image-mklibs image-prelink"
++USER_CLASSES ?= "buildstats image-mklibs image-prelink add_machine_symlinks"
+ 
+ #
+ # Runtime testing of images
