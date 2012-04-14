@@ -3,6 +3,7 @@ require linux.inc
 # Mark archs/machines that this kernel supports
 DEFAULT_PREFERENCE = "-1"
 DEFAULT_PREFERENCE_generic-armv4t = "1"
+DEFAULT_PREFERENCE_generic-armv5te = "1"
 
 PR = "r3"
 
