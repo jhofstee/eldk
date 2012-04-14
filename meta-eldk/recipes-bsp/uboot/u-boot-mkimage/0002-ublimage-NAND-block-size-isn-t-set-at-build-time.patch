@@ -1,0 +1,57 @@
+From: Loïc Minier <loic.minier@linaro.org>
+Date: Mon, 3 Oct 2011 09:57:12 +0000 (+0200)
+Subject: ublimage: NAND block size isn't set at build-time
+X-Git-Url: http://git.denx.de/cgi-bin/gitweb.cgi?p=u-boot.git;a=commitdiff_plain;h=9f8765805400db65b44c3edb68a638f17dd8399d
+
+ublimage: NAND block size isn't set at build-time
+
+mkimage's ublimage support can't depend of build-time board configs;
+instead, this should be set in ublimage.cfg.  Since currently no configs
+in u-boot override the NAND block size, hardcode it as such in
+ublimage.h to fix a build failure with "make tools":
+gcc [...] -o ublimage.o ublimage.c -c
+In file included from ublimage.c:37:0:
+ublimage.h:31:20: fatal error: config.h: No such file or directory
+
+Cc: Heiko Schocher <hs@denx.de>
+Cc: patches@linaro.org
+Signed-off-by: Loïc Minier <loic.minier@linaro.org>
+Acked-by: Heiko Schocher <hs@denx.de>
+---
+
+diff --git a/tools/ublimage.h b/tools/ublimage.h
+index c926689..93ec8ee 100644
+--- a/tools/ublimage.h
++++ b/tools/ublimage.h
+@@ -28,12 +28,6 @@
+ #ifndef _UBLIMAGE_H_
+ #define _UBLIMAGE_H_
+
+-#include <config.h>
+-
+-#if !defined(CONFIG_SYS_UBL_BLOCK)
+-#define CONFIG_SYS_UBL_BLOCK 512
+-#endif
+-
+ enum ublimage_cmd {
+	CMD_INVALID,
+	CMD_BOOT_MODE,
+@@ -71,6 +65,9 @@ enum ublimage_fld_types {
+ /* Define max UBL image size */
+ #define UBL_IMAGE_SIZE              (0x00003800u)
+
++/* one NAND block */
++#define UBL_BLOCK_SIZE 512
++
+ /* from sprufg5a.pdf Table 109 */
+ struct ubl_header {
+	uint32_t	magic;	/* Magic Number, see UBL_* defines */
+@@ -97,7 +94,7 @@ struct ubl_header {
+				 * Magic Number indicates fast EMIF boot).
+				 */
+	/* to fit in one nand block */
+-	unsigned char	res[CONFIG_SYS_UBL_BLOCK - 8 * 4];
++	unsigned char	res[UBL_BLOCK_SIZE - 8 * 4];
+ };
+
+ #endif /* _UBLIMAGE_H_ */
