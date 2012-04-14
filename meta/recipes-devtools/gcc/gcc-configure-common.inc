@@ -25,7 +25,8 @@ EXTRA_OECONF_PATHS ?= ""
 EXTRA_OECONF_INITIAL ?= ""
 EXTRA_OECONF_INTERMEDIATE ?= ""
 
-GCCMULTILIB = "--disable-multilib"
+MULTILIB_ARCH_LIST = "mips"
+GCCMULTILIB = '${@base_contains("MULTILIB_ARCH_LIST", "${TARGET_ARCH}", "--enable-multilib", "--disable-multilib",d)}'
 
 EXTRA_OECONF = "${@['--enable-clocale=generic', ''][d.getVar('USE_NLS', True) != 'no']} \
                 --with-gnu-ld \

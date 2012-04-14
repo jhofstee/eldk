@@ -17,7 +17,9 @@ FILES_${PN} = "${base_libdir}/libgcc*.so.*"
 FILES_${PN}-dev = " \
   ${base_libdir}/libgcc*.so \
   ${libdir}/${TARGET_SYS}/${BINV}/crt* \
-  ${libdir}/${TARGET_SYS}/${BINV}/libgcc*"
+  ${libdir}/${TARGET_SYS}/${BINV}/libgcc* \
+  ${libdir}/${TARGET_SYS}/${BINV}/nof/crt* \
+  ${libdir}/${TARGET_SYS}/${BINV}/nof/libgcc*"
 FILES_libgcov${PKGSUFFIX}-dev = " \
   ${libdir}/${TARGET_SYS}/${BINV}/libgcov.a"
 
