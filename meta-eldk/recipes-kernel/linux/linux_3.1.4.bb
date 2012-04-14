@@ -8,6 +8,7 @@ DEFAULT_PREFERENCE_generic-armv6 = "1"
 DEFAULT_PREFERENCE_generic-armv7a = "1"
 DEFAULT_PREFERENCE_generic-mips = "1"
 DEFAULT_PREFERENCE_generic-powerpc = "1"
+DEFAULT_PREFERENCE_generic-powerpc-softfloat = "1"
 
 PR = "r3"
 
