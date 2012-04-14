@@ -1,0 +1,54 @@
+#!/bin/sh
+# Start/stop/restart the system logging daemons.
+#
+# Written for Slackware Linux by Patrick J. Volkerding <volkerdi@slackware.com>.
+# Modded for rsyslogd by Chris Elvidge <chris@lowe.ae> Sept 2005
+#
+
+create_xconsole()
+{
+    if [ ! -e /dev/xconsole ]; then
+      mknod -m 640 /dev/xconsole p
+    else
+      chmod 0640 /dev/xconsole
+    fi
+    chown 0:0 /dev/xconsole
+}
+
+rsyslogd_start() {
+  if [ -x /usr/sbin/rsyslogd ]; then
+    echo -n "Starting rsyslogd daemon:  "
+# this one listens on the "usual" socket /dev/log
+    /usr/sbin/rsyslogd -i "$pidfile1"
+    echo "done"
+  fi
+}
+
+rsyslogd_stop() {
+  killall rsyslogd 2> /dev/null
+  /usr/bin/rm pidfile1 2> /dev/null
+}
+
+rsyslogd_restart() {
+  rsyslogd_stop
+  sleep 1
+  rsyslogd_start
+}
+
+confile1=/etc/rsyslog.conf
+pidfile1=/var/run/rsyslogd.pid
+
+case "$1" in
+'start')
+  create_xconsole
+  rsyslogd_start
+  ;;
+'stop')
+  rsyslogd_stop
+  ;;
+'restart')
+  rsyslogd_restart
+  ;;
+*)
+  echo "usage $0 start|stop|restart"
+esac
