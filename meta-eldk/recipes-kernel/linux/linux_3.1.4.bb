@@ -11,6 +11,7 @@ DEFAULT_PREFERENCE_generic-powerpc = "1"
 DEFAULT_PREFERENCE_generic-powerpc-softfloat = "1"
 DEFAULT_PREFERENCE_generic-powerpc-4xx = "1"
 DEFAULT_PREFERENCE_generic-powerpc-4xx-softfloat = "1"
+DEFAULT_PREFERENCE_generic-powerpc-e500v2 = "1"
 
 PR = "r3"
 
