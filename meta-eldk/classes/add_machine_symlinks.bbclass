@@ -18,8 +18,8 @@
 tool_prefix="${TARGET_ARCH}-${TARGET_OS}${TARGET_VENDOR}"
 
 # Strip the "generic-" from machine name
-MACHINE_NO_GENERIC = "${@bb.data.getVar('MACHINE', d, 1).replace('generic-', '')}"
-MACHINE_STRIPPED = "${@bb.data.getVar(['MACHINE', 'MACHINE_NO_GENERIC'][bb.data.getVar('MACHINE', d, 1).startswith('generic-')], d, 1)}"
+MACHINE_NO_GENERIC = "${@d.getVar('MACHINE', 1).replace('generic-', '')}"
+MACHINE_STRIPPED = "${@d.getVar(['MACHINE', 'MACHINE_NO_GENERIC'][d.getVar('MACHINE', 1).startswith('generic-')], 1)}"
 
 do_add_machine_symlinks () {
 	# ignore crosssdk packages
