@@ -11,11 +11,13 @@ QT_DISTRO_FLAGS_linuxstdbase = "-sm"
 QT_SQL_DRIVER_FLAGS ?= "-no-sql-ibase -no-sql-mysql -no-sql-psql -no-sql-odbc -plugin-sql-sqlite"
 
 QT_GLFLAGS ?= ""
+QT_WEBKIT_FLAGS ?= "-no-webkit"
 
 QT_CONFIG_FLAGS += "-release -no-cups -reduce-relocations \
                     -shared -no-nas-sound -no-nis \
                     -system-libjpeg -system-libpng -system-libtiff -system-zlib \
-                    -no-pch -qdbus -stl -glib -phonon -webkit \
+                    -no-pch -qdbus -stl -glib -phonon \
+                    ${QT_WEBKIT_FLAGS} \
                     -xmlpatterns -no-rpath -qt3support -silent \
                     ${@base_contains('DISTRO_FEATURES', 'pulseaudio', '--enable-pulseaudio', '--disable-pulseaudio', d)} \
                     ${QT_SQL_DRIVER_FLAGS} \
@@ -33,7 +35,7 @@ EXTRA_ENV = 'QMAKE="${STAGING_BINDIR_NATIVE}/qmake2 -after \
 export QT_CONF_PATH="${WORKDIR}/qt.conf"
 
 # Library packages
-QT_LIB_NAMES = "Qt3Support QtAssistantClient QtCLucene QtCore QtDBus QtDesigner QtDesignerComponents QtGui QtHelp QtNetwork QtOpenGL QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtWebKit QtXml QtXmlPatterns phonon QtMultimedia QtOpenVG QtMediaServices QtDeclarative"
+QT_LIB_NAMES = "Qt3Support QtAssistantClient QtCLucene QtCore QtDBus QtDesigner QtDesignerComponents QtGui QtHelp QtNetwork QtOpenGL QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtXml QtXmlPatterns phonon QtMultimedia QtOpenVG QtMediaServices QtDeclarative"
 
 QT_EXTRA_LIBS = "pvrQWSWSEGL"
 

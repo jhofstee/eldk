@@ -28,7 +28,6 @@ RDEPENDS_${PN}-base = " \
 	libqt-embeddedsql4 \
 	libqt-embeddedsvg4 \
 	libqt-embeddedtest4 \
-	libqt-embeddedwebkit4 \
 	libqt-embeddedxml4 \
 	qt4-embedded-fonts-ttf-dejavu \
 	qt4-embedded-fonts-ttf-vera \
