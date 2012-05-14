@@ -15,7 +15,7 @@ SRCREV = "d695872ccdf8a665a79b2dc1cc42ed598b36536e"
 
 S = "${WORKDIR}/git"
 
-LICENSE = "GPL"
+LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
 SRC_URI = "git://git.denx.de/linux-denx.git;branch=refs/heads/enbw_cmc;protocol=git \

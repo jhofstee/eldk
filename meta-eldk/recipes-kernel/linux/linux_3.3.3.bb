@@ -15,7 +15,7 @@ DEFAULT_PREFERENCE_generic-powerpc-e500v2 = "1"
 
 PR = "r3"
 
-LICENSE = "GPL"
+LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
 SRC_URI = "${KERNELORG_MIRROR}/linux/kernel/v3.x/linux-${PV}.tar.bz2 \
