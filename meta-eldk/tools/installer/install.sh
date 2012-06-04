@@ -4,7 +4,7 @@
 #
 # Licensed under the GPLv2 or later.
 
-ELDK_VERSION="5.2"
+ELDK_VERSION="5.2.1"
 default_path="/opt/eldk-${ELDK_VERSION}"
 
 SRC_DIR=$(dirname $0)

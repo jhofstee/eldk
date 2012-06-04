@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ELDK_VERSION="5.2"
+ELDK_VERSION="5.2.1"
 
 # Verify that we are running in the right directory
 # And that all needed files exist
