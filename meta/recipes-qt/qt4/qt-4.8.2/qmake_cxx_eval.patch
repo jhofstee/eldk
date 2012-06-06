@@ -1,0 +1,23 @@
+Allow expansion of $(...) references in QMAKE_CXX (currently its value
+is $(OE_QMAKE_CXX)) in order to allow compiler version check to succeed
+which allows WebKit to be enabled.
+
+Based on qmake_cxx_eval.patch for Qt 4.8.0 from
+Paul Eggleton <paul.eggleton@linux.intel.com>
+
+Inappropriate [configuration]
+
+Index: qt-everywhere-opensource-src-4.8.2/configure
+===================================================================
+--- qt-everywhere-opensource-src-4.8.2.orig/configure	2012-06-14 15:29:37.514171083 +0200
++++ qt-everywhere-opensource-src-4.8.2/configure	2012-06-14 15:28:54.314169512 +0200
+@@ -3382,7 +3396,8 @@
+     CFG_FRAMEWORK=no
+ fi
+ 
+-QMAKE_CONF_COMPILER=`getXQMakeConf QMAKE_CXX`
++QMAKE_CONF_COMPILER=`getXQMakeConf QMAKE_CXX | sed -n 's/$[(]\([0-9a-zA-Z_]*\)[)]/$\1/pg' | tail -1`
++QMAKE_CONF_COMPILER=`eval "echo $QMAKE_CONF_COMPILER"`
+ TEST_COMPILER="$CXX"
+ 
+ [ -z "$TEST_COMPILER" ] && TEST_COMPILER=$QMAKE_CONF_COMPILER
