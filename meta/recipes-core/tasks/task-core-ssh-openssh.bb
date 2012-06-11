@@ -12,6 +12,6 @@ PACKAGES = "\
 
 ALLOW_EMPTY = "1"
 
-RDEPENDS_task-core-ssh-openssh = "openssh"
+RDEPENDS_task-core-ssh-openssh = "openssh openssh-sftp-server"
 RDEPENDS_task-core-ssh-openssh-dbg = "openssh-dbg"
 RDEPENDS_task-core-ssh-openssh-dev = "openssh-dev"
