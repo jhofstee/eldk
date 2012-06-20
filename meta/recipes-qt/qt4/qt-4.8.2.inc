@@ -24,6 +24,7 @@ SRC_URI = "http://releases.qt-project.org/qt4/source/qt-everywhere-opensource-sr
            file://disable-fuse-gold-flag.patch \
            file://fix_conflicting_types.patch \
            file://set-OUTPUT_DIR-if-empty.patch \
+           file://0001-fix-QWSMemorySurface-memlock-bug.patch \
            "
 
 SRC_URI[md5sum] = "3c1146ddf56247e16782f96910a8423b"
