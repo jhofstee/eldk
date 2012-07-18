@@ -1,0 +1,85 @@
+#!/bin/sh
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+USB=/mnt/card
+
+umask 022
+mount -t proc proc /proc
+mount sysfs /sys -t sysfs
+if [ -e /proc/cpu/alignment ]; then
+   echo "3" > /proc/cpu/alignment
+fi
+mount tmpfs -t tmpfs $TMPDIR -o,size=40k
+
+echo 0 > /proc/sys/kernel/printk
+
+mount_usb() {
+found=0
+for i in /dev/sda?;do
+	mount $i ${USB}
+
+	if [ $? != 0 ];then 
+		continue
+	fi
+
+	if [ -f ${USB}/mcx-software*.mcx ];then
+		found=1
+		break
+	fi
+	umount ${USB}
+done
+if [ $found == 0 ];then
+	echo "No Software Image found....exiting !"
+	exit 1
+fi
+}
+
+rotation=0
+if [ -e /etc/rotation ]; then
+	read rotation < /etc/rotation
+fi
+
+depmod -a
+modprobe scsi_wait_scan
+
+
+# wait until the device node is created
+
+echo "Checking for application software"
+echo "---------------------------------"
+echo "  "
+
+while [ ! -b /dev/sda1 ];do
+	echo "Waiting for USB Pen..."
+	sleep 3
+done
+
+cp /etc/fw_env.config /tmp/.
+mount_usb
+
+for file in ${USB}/mcx-software*.mcx;do
+	echo " "
+	echo "Starting Software Update"
+	echo "------------------------"
+	echo Image found : $i
+	echo " "
+	swupdate -i $file -v	
+	if [ $? == 0 ];then
+		echo "SUCCESS !"
+	else
+		echo "FAILURE !"
+	fi
+	sleep 5
+	break
+done
+
+console=`cat /sys/class/tty/console/active`
+
+if [ x$console != "xttyO2" ];then
+	while [ 1 ]; do
+		echo "Please reboot the system !"
+		sleep 90
+		reboot
+	done
+fi
+exit 0
