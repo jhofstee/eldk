@@ -10,7 +10,6 @@ SRC_URI = "file://rcS.swupdate \
 S = "${WORKDIR}"
 
 do_install () {
-	echo "JLKJLKNLK"
 	install -d ${D}/${sysconfdir}
 	install -d ${D}/${sysconfdir}/init.d
 	rm -f ${D}${sysconfdir}/init.d/rcS
