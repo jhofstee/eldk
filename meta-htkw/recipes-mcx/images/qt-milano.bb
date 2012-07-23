@@ -17,6 +17,7 @@ IMAGE_INSTALL_append = "task-core-boot \
 		bzip2 \
 		cronie \
 		curl \
+		e2fsprogs \
 		gstreamer \
 		gst-omapfb \
 		gst-plugins-base \
@@ -39,6 +40,7 @@ IMAGE_INSTALL_append = "task-core-boot \
 		libsqlite3 \
 		libvorbis \
 		lighttpd \
+		ncurses \
 		ntp \
 		openssl \
 		openssh openssh-sftp-server \
@@ -53,6 +55,7 @@ IMAGE_INSTALL_append = "task-core-boot \
 		python-datetime \
 		python-elementtree \
 		python-fcntl \
+		python-inotify-mcx \
 		python-io \
 		python-logging \
 		python-math \
@@ -76,6 +79,7 @@ IMAGE_INSTALL_append = "task-core-boot \
 		screen \
 		strace \
 		tslib-calibrate \
+		u-boot-env-tools \
 		util-linux \
 		zip"
 
