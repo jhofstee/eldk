@@ -17,6 +17,7 @@ IMAGE_INSTALL_append = "task-core-boot \
 		bzip2 \
 		cronie \
 		curl \
+		curl-certs-mcx \
 		e2fsprogs \
 		gstreamer \
 		gst-omapfb \
@@ -59,6 +60,7 @@ IMAGE_INSTALL_append = "task-core-boot \
 		python-io \
 		python-logging \
 		python-math \
+		python-pyserial \
 		python-pickle \
 		python-sqlite3 \
 		python-stringold \
@@ -81,6 +83,7 @@ IMAGE_INSTALL_append = "task-core-boot \
 		tslib-calibrate \
 		u-boot-env-tools \
 		util-linux \
+		mmia \
 		zip"
 
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58 \
