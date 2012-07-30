@@ -1,0 +1,27 @@
+From 0b6f23decef04be8faced48568149cda7ef63608 Mon Sep 17 00:00:00 2001
+From: Stefano Babic <sbabic@denx.de>
+Date: Wed, 14 Mar 2012 11:12:35 +0100
+Subject: [PATCH 1/4] mcx: increased buffer for command line
+
+Signed-off-by: Stefano Babic <sbabic@denx.de>
+CC: Tom Rini <trini@ti.com>
+---
+ include/configs/mcx.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/configs/mcx.h b/include/configs/mcx.h
+index 1315c3c..6159268 100644
+--- a/include/configs/mcx.h
++++ b/include/configs/mcx.h
+@@ -230,7 +230,7 @@
+ #define CONFIG_SYS_HUSH_PARSER		/* use "hush" command parser */
+ #define CONFIG_SYS_PROMPT_HUSH_PS2	"> "
+ #define CONFIG_SYS_PROMPT		V_PROMPT
+-#define CONFIG_SYS_CBSIZE		512	/* Console I/O Buffer Size */
++#define CONFIG_SYS_CBSIZE		1024/* Console I/O Buffer Size */
+ /* Print Buffer Size */
+ #define CONFIG_SYS_PBSIZE		(CONFIG_SYS_CBSIZE + \
+ 					sizeof(CONFIG_SYS_PROMPT) + 16)
+-- 
+1.7.9.5
+

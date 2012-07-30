@@ -1,0 +1,78 @@
+From c6622013be4c20e8716f147c7cfccd7dd0ee8f5f Mon Sep 17 00:00:00 2001
+From: Stefano Babic <sbabic@denx.de>
+Date: Fri, 30 Mar 2012 16:05:36 +0200
+Subject: [PATCH 4/4] OMAP3: mcx: read hot-water-button after reset
+
+Detect hot-water-button to start a differnt image.
+
+Signed-off-by: Stefano Babic <sbabic@denx.de>
+CC: Tom Rini <trini@ti.com>
+---
+ board/htkw/mcx/mcx.c  |   23 +++++++++++++++++++++++
+ include/configs/mcx.h |    2 ++
+ 2 files changed, 25 insertions(+)
+
+diff --git a/board/htkw/mcx/mcx.c b/board/htkw/mcx/mcx.c
+index e593b43..f7d92e8 100644
+--- a/board/htkw/mcx/mcx.c
++++ b/board/htkw/mcx/mcx.c
+@@ -37,6 +37,8 @@
+ 
+ DECLARE_GLOBAL_DATA_PTR;
+ 
++#define HOT_WATER_BUTTON	38
++
+ #ifdef CONFIG_USB_EHCI
+ static struct omap_usbhs_board_data usbhs_bdata = {
+ 	.port_mode[0] = OMAP_EHCI_PORT_MODE_PHY,
+@@ -79,6 +81,27 @@ int misc_init_r(void)
+ 	return 0;
+ }
+ 
++#ifdef CONFIG_BOARD_LATE_INIT
++int board_late_init(void)
++{
++	if (gpio_request(HOT_WATER_BUTTON, "hot-water-button") < 0) {
++		puts("Failed to get hot-water-button pin\n");
++		return -ENODEV;
++	}
++	gpio_direction_input(HOT_WATER_BUTTON);
++
++	/*
++	 * if hot-water-button is pressed
++	 * change bootcmd
++	 */
++	if (gpio_get_value(HOT_WATER_BUTTON))
++		return 0;
++
++	setenv("bootcmd", "run swupdate");
++	return 0;
++}
++#endif
++
+ /*
+  * Routine: set_muxconf_regs
+  * Description: Setting up the configuration Mux registers specific to the
+diff --git a/include/configs/mcx.h b/include/configs/mcx.h
+index d9bd089..02e009d 100644
+--- a/include/configs/mcx.h
++++ b/include/configs/mcx.h
+@@ -30,6 +30,7 @@
+ 
+ #define MACH_TYPE_MCX			3656
+ #define CONFIG_MACH_TYPE	MACH_TYPE_MCX
++#define CONFIG_BOARD_LATE_INIT
+ 
+ #define CONFIG_SYS_CACHELINE_SIZE	64
+ 
+@@ -140,6 +141,7 @@
+ #define CONFIG_MTD_PARTITIONS
+ #define CONFIG_MTD_DEVICE
+ #define CONFIG_CMD_MTDPARTS
++#define CONFIG_CMD_GPIO
+ 
+ #undef CONFIG_CMD_FLASH		/* flinfo, erase, protect	*/
+ #undef CONFIG_CMD_FPGA		/* FPGA configuration Support	*/
+-- 
+1.7.9.5
+
