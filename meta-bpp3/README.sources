@@ -1,0 +1,8 @@
+TBD
+
+add nano from:
+
+http://cgit.openembedded.org/meta-openembedded/tree/meta-oe/recipes-support/nano
+
+patch from:
+http://oe-lite.org/redmine/projects/base/repository/revisions/0b73b56321eb9ea111c477416c75710850e271b5/entry/recipes/nano/nano-2.2.6/ncursesw.includedir.patch
