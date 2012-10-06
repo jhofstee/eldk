@@ -161,3 +161,9 @@ rebuild qt-work rootfs:
 
 MACHINE=bpp3 bitbake -c cleansstate linux-bpp3
 MACHINE=bpp3 bitbake qt-work
+
+
+----------------------------------------------------------------------------
+cd /home/jeroen/bpp3/system/eldk/ && source meta-eldk/tools/set-path && MACHINE=bpp3 && source oe-init-build-env /opt/eldk/build/bpp3-armv7a/
+
+MACHINE=bpp3 bitbake qt-work

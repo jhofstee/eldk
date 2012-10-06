@@ -17,6 +17,7 @@ IMAGE_INSTALL_append = "task-core-boot \
 		bzip2 \
 		cronie \
 		curl \
+		dropbear \
 		e2fsprogs \
 		gstreamer \
 		gst-omapfb \
