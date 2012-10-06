@@ -52,11 +52,14 @@ IMAGE_INSTALL_append = "task-core-boot \
 		python-crypt \
 		python-curses \
 		python-datetime \
+		python-dbus \
 		python-elementtree \
 		python-fcntl \
+		python-pygobject \
 		python-io \
 		python-logging \
 		python-math \
+		python-netclient \
 		python-pyserial \
 		python-pickle \
 		python-sqlite3 \
