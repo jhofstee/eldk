@@ -34,9 +34,14 @@ IMAGE_INSTALL_append = "task-core-boot \
 		ldd \
 		less \
 		libqt-embeddedcore4 \
+		libqt-embeddeddbus4 \
+		libqt-embeddeddeclarative4 \
 		libqt-embeddedgui4 \
 		libqt-embeddednetwork4 \
+		libqt-embeddedscript4 \
 		libqt-embeddedsvg4 \
+		libqt-embeddedxml4 \
+		libqt-embeddedxmlpatterns4 \
 		libsegfault \
 		libsqlite3 \
 		libvorbis \
@@ -76,15 +81,18 @@ IMAGE_INSTALL_append = "task-core-boot \
 		qt4-embedded-plugin-imageformat-mng \
 		qt4-embedded-plugin-imageformat-svg \
 		qt4-embedded-plugin-imageformat-tiff \
-		qt4-embedded-plugin-mousedriver-tslib \
 		qte-env-cfg \
 		rsync \
 		screen \
 		strace \
-		tslib-calibrate \
 		u-boot-env-tools \
 		util-linux \
 		zip"
+
+park = " \
+		tslib-calibrate \
+		qt4-embedded-plugin-mousedriver-tslib \
+	"
 
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58 \
 			file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420 \
