@@ -19,17 +19,6 @@ IMAGE_INSTALL_append = "task-core-boot \
 		curl \
 		dropbear \
 		e2fsprogs \
-		gstreamer \
-		gst-omapfb \
-		gst-plugins-base \
-		gst-plugins-base-decodebin \
-		gst-plugins-base-decodebin2 \
-		gst-plugins-base-ffmpegcolorspace \
-		gst-plugins-base-ogg \
-		gst-plugins-base-playbin \
-		gst-plugins-base-theora \
-		gst-plugins-base-typefindfunctions \
-		gst-plugins-base-vorbis \
 		iproute2 \
 		ldd \
 		less \
@@ -92,6 +81,17 @@ IMAGE_INSTALL_append = "task-core-boot \
 park = " \
 		tslib-calibrate \
 		qt4-embedded-plugin-mousedriver-tslib \
+		gst-omapfb \
+		gstreamer \
+		gst-plugins-base \
+		gst-plugins-base-decodebin \
+		gst-plugins-base-decodebin2 \
+		gst-plugins-base-ffmpegcolorspace \
+		gst-plugins-base-ogg \
+		gst-plugins-base-playbin \
+		gst-plugins-base-theora \
+		gst-plugins-base-typefindfunctions \
+		gst-plugins-base-vorbis \
 	"
 
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58 \
