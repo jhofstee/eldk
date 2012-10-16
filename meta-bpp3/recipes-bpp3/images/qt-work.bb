@@ -70,6 +70,7 @@ IMAGE_INSTALL_append = "task-core-boot \
 		qt4-embedded-plugin-imageformat-mng \
 		qt4-embedded-plugin-imageformat-svg \
 		qt4-embedded-plugin-imageformat-tiff \
+		qt4-embedded-qmlviewer \
 		qte-env-cfg \
 		rsync \
 		screen \
